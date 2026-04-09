@@ -14,26 +14,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   String message = '';
 
-Future<void> updatePassword() async {
-  try {
-    String password = passwordController.text;
-
-    // At least 6 characters AND at least 1 number
-    if (password.length < 6 || !RegExp(r'\d').hasMatch(password)) {
-      setState(() {
-        message = "Password must be at least 6 characters and include at least 1 number.";
-      });
-      return;
-    }
-
-      await authService.changePassword(passwordController.text.trim());
+  Future<void> updatePassword() async {
+    try {
+      await authService.changePassword(
+        passwordController.text.trim(),
+      );
 
       setState(() {
         message = "Password updated successfully.";
       });
     } catch (e) {
       setState(() {
-        message = "Please log in again before changing password.";
+        message = "Password update failed.";
       });
     }
   }
@@ -63,7 +55,10 @@ Future<void> updatePassword() async {
 
                   const Text(
                     "Welcome",
-                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
 
                   const SizedBox(height: 10),
@@ -88,7 +83,10 @@ Future<void> updatePassword() async {
                   const SizedBox(height: 20),
 
                   if (message.isNotEmpty)
-                    Text(message, style: const TextStyle(color: Colors.green)),
+                    Text(
+                      message,
+                      style: const TextStyle(color: Colors.green),
+                    ),
 
                   const SizedBox(height: 15),
 
