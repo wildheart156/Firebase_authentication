@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'profile_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -7,7 +8,17 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Login Screen")),
-      body: const Center(child: Text("This is the Login Screen placeholder")),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const ProfileScreen()),
+            );
+          },
+          child: const Text("Go To Profile"),
+        ),
+      ),
     );
   }
 }
