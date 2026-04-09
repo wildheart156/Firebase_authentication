@@ -7,7 +7,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final authService = AuthService();
-    final user = authService.currentUser;
+    final user = authService.getCurrentUser();
 
     return Scaffold(
       appBar: AppBar(title: const Text("Home Screen")),
