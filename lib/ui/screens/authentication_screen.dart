@@ -15,5 +15,5 @@ class AuthenticationScreen extends StatelessWidget {
     } else {
       return const LoginScreen();
     }
-  }
+  } 
 }
