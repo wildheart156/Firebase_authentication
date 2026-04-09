@@ -14,8 +14,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   String message = '';
 
-  Future<void> updatePassword() async {
-    try {
+Future<void> updatePassword() async {
+  try {
+    String password = passwordController.text;
+
+    // At least 6 characters AND at least 1 number
+    if (password.length < 6 || !RegExp(r'\d').hasMatch(password)) {
+      setState(() {
+        message = "Password must be at least 6 characters and include at least 1 number.";
+      });
+      return;
+    }
+
       await authService.changePassword(passwordController.text.trim());
 
       setState(() {
@@ -23,7 +33,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       });
     } catch (e) {
       setState(() {
-        message = "Password update failed.";
+        message = "Please log in again before changing password.";
       });
     }
   }

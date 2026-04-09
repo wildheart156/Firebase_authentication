@@ -85,4 +85,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'authentication-in-flutte-b2567.firebasestorage.app',
     measurementId: 'G-LLVTBPBLLL',
   );
+
 }

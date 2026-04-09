@@ -22,10 +22,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
         emailController.text.trim(),
         passwordController.text.trim(),
       );
-      Navigator.pop(context);
+//      Navigator.pop(context);
     } catch (e) {
       setState(() {
-        errorMessage = "Registration failed.";
+        errorMessage = e.toString().replaceFirst("Exception: ", "");
       });
     }
   }
