@@ -14,7 +14,7 @@ class AuthService {
         password: pass,
       );
     } catch (e) {
-      throw _handleError(e);
+      throw Exception(_handleError(e));
     }
   }
 
